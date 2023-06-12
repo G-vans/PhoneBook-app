@@ -1,0 +1,23 @@
+<h1>Contacts (Grid View)</h1>
+<% if @contacts.present? %>
+  <div class="row">
+    <% @contacts.each do |contact| %>
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title"><%= contact.first_name %> <%= contact.last_name %></h5>
+            <p class="card-text"><strong>Email:</strong> <%= contact.email %></p>
+            <p class="card-text"><strong>Phone:</strong> <%= contact.phone %></p>
+            <div class="btn-group">
+              <%= link_to 'Show', contact, class: 'btn btn-sm btn-primary' %>
+              <%= link_to 'Edit', edit_contact_path(contact), class: 'btn btn-sm btn-secondary' %>
+              <%= link_to 'Delete', contact, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-sm btn-danger' %>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+<% else %>
+  <p>No contacts found.</p>
+<% end %>

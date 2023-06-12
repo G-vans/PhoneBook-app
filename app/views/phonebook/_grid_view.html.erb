@@ -1,0 +1,18 @@
+<div class="row">
+  <% @contacts.each do |contact| %>
+    <div class="col-md-4">
+      <div class="card mb-3">
+        <div class="card-body">
+          <h5 class="card-title"><%= "#{contact.first_name} #{contact.last_name}" %></h5>
+          <p class="card-text"><strong>Email:</strong> <%= contact.email %></p>
+          <p class="card-text"><strong>Phone Number:</strong> <%= contact.phone_number %></p>
+          <div class="btn-group" role="group" aria-label="Contact Actions">
+            <%= link_to 'Show', phonebook_path(contact), class: 'btn btn-primary' %>
+            <%= link_to 'Edit', edit_phonebook_path(contact), class: 'btn btn-secondary' %>
+            <%= link_to 'Delete', phonebook_path(contact), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>

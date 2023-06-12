@@ -1,0 +1,27 @@
+<% if @contacts.present? %>
+  <% if params[:view] == 'list' %>
+    <ul class="list-group">
+      <% @contacts.each do |contact| %>
+        <li class="list-group-item">
+          <%= check_box_tag "selected_contacts[]", contact.id %>
+          <%= link_to contact.first_name, contact_path(contact) %>
+        </li>
+      <% end %>
+    </ul>
+  <% elsif params[:view] == 'grid' %>
+    <div class="row">
+      <% @contacts.each do |contact| %>
+        <div class="col-md-4">
+          <div class="card mb-3">
+            <div class="card-body">
+              <%= check_box_tag "selected_contacts[]", contact.id %>
+              <%= link_to contact.first_name, contact_path(contact) %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+<% else %>
+  <p>No contacts found.</p>
+<% end %>
