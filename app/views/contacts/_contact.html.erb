@@ -1,22 +1,7 @@
-<div id="<%= dom_id contact %>">
-  <p>
-    <strong>First name:</strong>
-    <%= contact.first_name %>
-  </p>
-
-  <p>
-    <strong>Last name:</strong>
-    <%= contact.last_name %>
-  </p>
-
-  <p>
-    <strong>Email:</strong>
-    <%= contact.email %>
-  </p>
-
-  <p>
-    <strong>Phone number:</strong>
-    <%= contact.phone_number %>
-  </p>
-
-</div>
+<tr>
+  <td><%= check_box_tag "contact_ids[]", contact.id %></td>
+  <td><%= contact.first_name %> <%= contact.last_name %></td>
+  <td><%= contact.email %></td>
+  <td><%= contact.phone_number %></td>
+  <td><%= link_to "Show this contact", contact %></td>
+</tr>

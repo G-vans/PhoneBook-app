@@ -3,8 +3,13 @@ class ContactsController < ApplicationController
 
   # GET /contacts or /contacts.json
   def index
-    @contacts = Contact.all
+    @contacts = Contact.order(:first_name)
+  
+    if params[:search].present?
+      @contacts = @contacts.where("first_name ILIKE ?", "%#{params[:search]}%")
+    end
   end
+  
 
   # GET /contacts/1 or /contacts/1.json
   def show
@@ -56,6 +61,12 @@ class ContactsController < ApplicationController
       format.json { head :no_content }
     end
   end
+  
+  def destroy_multiple
+    contact_ids = params[:contact_ids]
+    Contact.where(id: contact_ids).destroy_all if contact_ids.present?
+    redirect_to contacts_path, notice: "Selected contacts have been deleted."
+  end  
 
   private
     # Use callbacks to share common setup or constraints between actions.

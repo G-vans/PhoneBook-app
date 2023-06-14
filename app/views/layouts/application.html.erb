@@ -10,9 +10,16 @@
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
+    <%= javascript_include_tag 'jquery' %>
+
+    <%= javascript_include_tag 'delete_multiple' %>
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet" >
   </head>
 
-  <body class ="container">
-    <%= yield %>
-  </body>
+  <body class="container">
+  <%= render partial: 'shared/navbar' %>
+  <%= yield %>
+</body>
 </html>

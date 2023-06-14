@@ -1,0 +1,14 @@
+$(document).on('turbolinks:load', function() {
+  // Send AJAX request on input change
+  $('#contact-search-input').on('input', function() {
+    $.ajax({
+      url: $('#contact-search-form').attr('action'),
+      method: 'GET',
+      data: $('#contact-search-form').serialize(),
+      dataType: 'script',
+      success: function(response) {
+        $('#contact-list').html(response);
+      }
+    });
+  });
+});
