@@ -4,7 +4,7 @@ databases:
 
 services:
   - type: web
-    name: rails
+    name: phonebook
     plan: starter
     env: ruby
     buildCommand: "./bin/render-build.sh"
