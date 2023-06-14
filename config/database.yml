@@ -33,7 +33,8 @@ test:
 
 production:
   <<: *default
+  url: <%= ENV["DATABASE_URL"] %>
   database: phonebook_production
   username: postgres
-  password: <%= ENV["PHONEBOOK_DATABASE_PASSWORD"] %>
+  password: 
 
