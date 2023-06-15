@@ -10,14 +10,10 @@ $(document).on("submit", "#delete-multiple-form", function(event) {
       method: method,
       data: data,
       success: function(response) {
-        // Handle success response
-        // For example, show a success message and refresh the contact list
         showSuccessMessage("Contacts deleted successfully");
-        window.location.reload(); // Refresh the page to update the contact list
+        window.location.reload();
       },
       error: function(xhr, status, error) {
-        // Handle error response
-        // For example, show an error message
         showErrorMessage("An error occurred while deleting contacts");
       }
     });

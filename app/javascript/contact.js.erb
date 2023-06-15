@@ -1,3 +1,4 @@
+
 $(document).on('turbolinks:load', function() {
   // Send AJAX request on input change
   $('#contact-search-input').on('input', function() {
@@ -12,3 +13,24 @@ $(document).on('turbolinks:load', function() {
     });
   });
 });
+
+// Get the elements
+var listViewTable = document.querySelector('.list-view');
+var cardViewContainer = document.querySelector('.card-view');
+
+// List View
+function listView() {
+  listViewTable.style.display = 'table';
+  cardViewContainer.style.display = 'none';
+}
+
+// Grid View
+function gridView() {
+  listViewTable.style.display = 'none';
+  cardViewContainer.style.display = 'block';
+}
+
+// Toggle active class
+var current = document.getElementsByClassName("active");
+current[0].classList.remove("active");
+this.classList.add("active");

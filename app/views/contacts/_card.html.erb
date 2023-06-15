@@ -1,0 +1,10 @@
+<div class="column card-column">
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-title"><%= contact_item.first_name %> <%= contact_item.last_name %></h5>
+      <p class="card-text"><%= contact_item.email %></p>
+      <p class="card-text"><%= contact_item.phone_number %></p>
+      <a href="<%= contact_path(contact_item) %>" class="btn btn-primary">Show this contact</a>
+    </div>
+  </div>
+</div>

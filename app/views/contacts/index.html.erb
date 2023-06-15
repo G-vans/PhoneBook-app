@@ -3,31 +3,41 @@
 <h1>Contacts</h1>
 
 <div id="contacts">
-  <div id="search-form">
+  <div id="search-form" style="display: flex; align-items: center;">
     <%= form_tag contacts_path, method: :get, remote: true, id: "contact-search-form" do %>
       <%= text_field_tag :search, params[:search], placeholder: "Search by first name", id: "contact-search-input" %>
     <% end %>
+    <%= button_tag class: "btn active", style: "margin-left: 60%;", onclick: "listView()" do %>
+      <i class="fa fa-bars"></i> List
+    <% end %>
+    <%= button_tag class: "btn", onclick: "gridView()" do %>
+      <i class="fa fa-th-large"></i> Grid
+    <% end %>
   </div>
-<%= form_tag destroy_multiple_contacts_path, method: :delete, id: "delete-multiple-form" do %>
-  <table class="table">
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Email</th>
-        <th>Phone Number</th>
-        <th></th>
-      </tr>
-    </thead>
-    <tbody id="contact-list">
-      <%= render partial: 'contacts/contact', collection: @contacts %>
-    </tbody>
-  </table>
-   <%= submit_tag "Delete Selected Contacts", class: "btn btn-danger", data: { confirm: "Are you sure you want to delete the selected contacts?" } %>
-<% end %>
+
+  <%= form_tag destroy_multiple_contacts_path, method: :delete, id: "delete-multiple-form" do %>
+    <table class="table list-view">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Phone Number</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody id="contact-list">
+        <%= render partial: 'contacts/contact', collection: @contacts %>
+      </tbody>
+    </table>
+    <%= submit_tag "Delete Selected Contacts", class: "btn btn-danger", data: { confirm: "Are you sure you want to delete the selected contacts?" } %>
+  <% end %>
+
+  <div class="card-view" style="display: none;">
+  <%= render partial: 'contacts/card', collection: @contacts, as: :contact_item %>
 </div>
 
+</div>
+<br />
 <%= link_to "New contact", new_contact_path %>
 <br />
 <br />
-
-
